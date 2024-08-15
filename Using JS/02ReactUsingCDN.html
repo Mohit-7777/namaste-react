@@ -1,0 +1,24 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="02ReactUsingCDN.css">
+</head>
+<body>
+    <h1>Hello Frands</h1>
+    <div id="root"></div>   <!--Render() will only work in this tag. Rest will remain the same. Render will replace everything inside this tag-->
+    <h1>Hello Frands</h1>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+<!-- <script src="02ReactUsingCDN.js"></script> -->
+<script src="02ReactUsingCDN2.js"></script>     <!--The sequence of the tags matter because the last script file is using the upper script files to run JS -->
+
+
+
+<!-- React can work independently on a SMALL PORTION of our page. whether it is a HEADER or FOOTER or any div element, it can work anywhere thats why its called a library -->
+
+    
+</body>
+</html>
