@@ -1,0 +1,216 @@
+NPM :- npm is everything but not node package manager
+npm does manages packages but its not node package manager officially
+Its the repository for all the packages.
+All the packages we need is hoisted inside it.
+
+
+How to add package manager inside our project
+npm init
+package name :- 
+version :-
+description :-
+entry point :-
+test command :-jest
+git repository :-
+keywords :-
+author :-
+License :-
+IS IT OKAY? 
+
+
+package.json has been created 
+
+package.json is a configuration for npm 
+packages are also known as dependencies
+npm has all the records of the version of the packages that we are using in our project
+It keep a track of what version of package is installed in our system
+IT BASICALLY HAS THE APPROX VERSION OF PACKAGES UNLIKE PACKAGE-LOCK.JSON
+npm takes care of the packages inside the package.json
+now we can get packages inside our app
+
+
+
+BUNDLER :- 
+The most important package inside our app is bundler
+Before sending a code to the production, our code needs to be bundled, minified, cached, compressed, cleaned. A bundler helps to do these things
+Webpack, parcel and vite are the example
+It basically bundles our app, it packages our app properly so it can be shifted to production
+When we use create-react-app, Behind the scenes it uses bundler to bundle the app
+
+
+We will be using parcel
+HOW TO INSTALL PARCEL INTO OUR APP
+-parcel comes as a node package
+-npm install -D parcel                      -D is for Dev Dependencies
+-parcel is used for development that's why we are using -D for parcel
+
+
+Dependencies Types
+-DEV Dependencies are required for our develop phase
+-NORMAL Dependencies are used in Production
+
+
+
+TILDE~  VS CARET^
+CARET(^) helps to automatically upgrade dependencies if there comes any mini upgrade for that dependency in the market
+EG :- 2.8.3  -------> 2.8.4
+Its always safe to use CARET instead of TILDE
+
+TILDE(~) is used to automatically upgrade dependencies if there comes a major upgrade for the dependency .
+EG :- 2.8.3  -------> 3.0.0
+If we install major upgrade, it messes up the app
+
+IF WE DON'T PUT ANYTHING, IT WILL HAVE THE SAME VERSION THAT IS INSTALLED THE FIRST TIME. IT WON'T UPGRADE
+
+
+
+After Installing the parcel:-
+WE got package-lock.json
+-It basically keep the track of the exact verion that is being used.
+-It can't have Caret(^) or Tilde(~).
+
+Suppose tomorrow any of the package gets upgraded. Package.json will still show that same verion with Caret or Tilde with it but Package-lock.json
+will show the exact version that is being used by the app
+
+
+Integrity in Package-lock.json
+It has some hash code inside it. EG :- SHA512
+It ensures that Whatever is there on my local machine is same as we deployed on the production.
+
+
+
+When we install PARCEL, there is One More thing had been installed with it and that is NODE_MODULES
+node_modules contains all the code that we fetched from npm
+When we install parcel, it basically fetched all the code for parcel and put it inside the node_modules
+Node module is kind of a database which contain the all the data for the parcel dependencies
+node modules fetches all the code of all the dependencies that is in our system, and we can use it
+
+
+
+We only installed parcel then why do we have so many other files in node module with parcel.
+Becase we installed parcel and parcel has its own dependencies and those dependences has their own dependences and so on, this is known as TRANSITIVE DEPENDENCIES
+Thats why we node_modules has so many different files 
+These all files are used to run parcel
+
+
+HOW MANY PACKAGE.JSON DOES OUR APP COTAINS
+- Our app contains TOO many package.json files 
+- When we see inside our node modules, every package like parcel etc has their own package.json file just like every other packages inside node_modules
+- Every dependency has so many dependencies and those dependencies has their own dependencies and so on. Thats how an app has a lot of dependencies
+
+
+
+.gitignore :-
+The files we don't want to upload on production or on github we can add their address inside .gitignore file
+EG :- /node_modules
+
+node_modules are not required to be put on github
+
+package.json and package-lock.json are very much necessary to be uploaded on github
+because if we have them both we can recreate all the node modules in a second
+
+just use command "npm install"
+
+Whatever we can regenerate, we should not put that on github
+
+
+
+                                                        PART 
+-npx parcel index.html
+parcel will create a server for us will host the app in the server at localhost:1234
+This is a good way to host our app. The previous way was not the good way to use our app
+Parcel has done this for us
+
+For installing a Package we use NPM but for executing the package we use NPX
+
+npx anyPackageName  source(index.html)
+
+With this command npx we have executed parcel
+
+parcel goes to the source "index.html" build a development build for our app and host that development build in localhost:1234
+
+Previously we use CDN links to run react into our app. Another way to run react into our app is npm
+CDN links are not the best way to bring react and react dom into our app
+cuz we need to do a network call to unpkg.com to fetch react into our app
+and if the react version changes we will be needing to change the verion in the links again and again to run the application
+
+Instead we have react into our node modules which doesn't require any network call and version changes as well
+Its easier to manage with the help of package.json
+
+To install react we use the command
+                                        npm install react
+            
+And for react-dom
+                                        npm install react-dom
+                                
+Now we can remove the CDN Links from index.html
+
+
+But if we try to use run the pgm, it won't work properly, it'll say react is not defined despite installing react into our app
+We have react into our node modules now but still it won't work into our app because we would be needing to import react into our App.js file from the node_modules
+
+import React from "react";
+import ReactDOM from "react-dom";
+
+Even After importing React and ReactDOM it will still throw an error saying "Browsers scripts cannot have imports or exports"
+
+When we are linking our html to JS it is considering it as normal JS inspite of treating it as a React
+Normal JS files can't have imports 
+
+SO to tell the browser it is not a normal JS and its a ReactJS we need to add an attribute to the script tag which is type="modeule"
+<script type="module" src="./App.js"></script>
+
+Now the react is coming from the node modules
+                                        
+Also with the help of parcel,now the browser will automatically refresh/reload as soon as we save the file
+
+#parcel
+-Dev Build
+-Local Server
+-HMR = Hot Module Replacement
+HMR basically means the browser gets automatically reloaded when we change and save anything in the code
+Parcel is doing this with the help of File Watching Algorithm
+-File Watching Algorithm - Written in C++
+
+As soon as we save parcel will Build it once again "Built in 962ms"
+
+-Caching = Faster Builds
+.parcel-cache folder is created when we start running an app. cache is used to build an app faster
+
+-Image Optimization
+-Minification
+-Bundling
+-Compress = compressed code is stored inside dist folder
+-Consistent Hashing 
+-Code Splitting
+-Differential Bundling = to support older versions of Browsers
+-Diagnostic = Beautiful Errors
+-Error Handling
+-Https
+-Tree Shaking - remove unused code
+- Different dev and prod bundles
+
+
+
+
+"main": "App.js", in package.json tell the source when running a react application using npx parcel
+
+We need to remove it in case we are running it as a production app
+
+npx parcel build index.html = This command is used for production
+
+
+.parcel-cache and dist can be automatically generated
+
+  "browserslist": [
+    "last 2 versions",
+    "last 3 chrome verions,
+    "last 3 safari verions,
+  ]
+
+  this is how we use Browserslist
+  website:- Browserslist.dev
+
+
+
+  NOW WITH ALL THE PARCEL AND BUNDLER AND ALL, WE HAVE FINALLY CREATED THE CREATE-REACT-APP THING
