@@ -5,7 +5,7 @@ All the packages we need is hoisted inside it.
 
 
 How to add package manager inside our project
-npm init
+npm init    (This command is used to create or initialize npm and create package.json file)
 package name :- 
 version :-
 description :-
