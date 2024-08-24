@@ -2,7 +2,7 @@ const heading = React.createElement("h1", { id:"heading" }, "Namaste React"); //
 
 console.log(heading);   //Heading is just a react element. React elements are  JS Objects
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
+const root = ReactDOM.createRoot(document.getElementById("root"));//cuz we're dealing with browsers, we have ReactDOM(Browser displaying)
 
 root.render(heading); //Putting the heading inside the root.
 //Its job is to take the JS Object, create h1 tag and put that up inside the root
@@ -17,3 +17,10 @@ root.render(heading); //Putting the heading inside the root.
                 //Tag Name,     Attribute,    children(innerHTML)   
 
 //props : - The children or attribute that we pass inside the createElement are props
+
+
+
+const heading1 = React.createElement("h1", { id: "heading" }, "Namaste React"); //Earlier we used to create Element like this
+
+const jsxheading = <h1 id="heading">Namaste React using JSX</h1> //and now with the help of JSX, it became easier for us
+                                                                //to create React element 

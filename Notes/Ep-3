@@ -1,0 +1,199 @@
+-npx parcel index.html
+-This command will create a development build for us and host it up on localhost:1234
+-executing npm package "parcel" with source file "index.html"
+
+instead of writing the commmand "npx parcel index.html" again and again we can create scripts
+scipts basically makes it easier to build the development as well as production app
+
+--->In package.json we can create scripts
+"scripts": {
+"start":"parcel index.html",
+"build":"parcel build index.html",
+"test": "jest" This script was already there, when we did "npm init"
+}
+
+--->And now if we'd like to start the application we can type(for development mode only)
+"npm run start" OR
+"npm start"
+
+--->And for production we can type
+"npm run build"
+
+---
+
+Before we used to create our react app like this
+
+const heading = React.createElement("h1", { id:"heading" }, "Namaste React");
+
+It is good but not very developer friendly and not the best way to create elements inside the app so to overcome this problem we have JSX
+JSX and React both are 2 different things. JSX is not a part of React
+But we use JSX inside React
+
+JSX and html are not the same thing. JSX is JSX and HTML is HTML
+JSX is a html-like syntax
+
+JSX is also an OBJECT just like react Element
+
+const heading1 = React.createElement("h1", { id: "heading" }, "Namaste React"); //Earlier we used to create Element like this
+
+We will never use React.createElement, because its not developer friendly and difficult to use
+
+React.createElement => ReactElement - JS Object => HTMLElement(render)
+
+const jsxheading = <h1 id="heading">Namaste React using JSX</h1> //and now with the help of JSX, it became easier for us
+//to create React element
+
+JSX => React.createElement => ReactElement - JS Object => HTMLElement(render)
+
+They both are OBJECTS
+
+JSX is not VALID JS. JS ENGINE can't understand JSX
+JS engine only understand ECMA SCRIPT 6
+Browser doesn't understand JSX
+
+If js engine can't understand it and browser too then how are we running this app and still it works totally fine
+Well, PARCEL is making it happen
+
+JSX(transpiled before it reaches the JS ENGINE) - PARCEL - BABEL(TRANSPILER)
+
+BABEL is Transpiler(Compiler) that comes with the parcel package. Babel itself is a Package (JSX -> React)
+
+JSX => React.createElement => ReactElement - JS Object => HTMLElement(render)
+
+Babel also transpiler a code so that even older version of a browser can understand the code and code can run on the older browsers
+
+JSX is not html or xml because when writing class we use className(we use camelCase in this whereas in html we use normal case)
+
+JSX => camelCase
+
+const heading1 = (<h1 className="head">
+Namaste JSX
+
+</h1>)
+If writing JSX in multiple line wrap the code inside ( ). It is mandatory
+
+---
+
+                                    React Component
+
+-React Functional Component (NEW) -React Class Component (OLD)
+
+REACT FUNCTIONAL COMPONENT :- Just a normal JS function which returns some JSX
+A javaScript Function which returns a React Element.
+-When creating a react functional based component it is suggested to name it with a capital letter
+
+1.       const FunctionalComponent = () => {
+        return <h1>Namaste Dosto</h1>
+        }
+
+2.       const FunctionalComponent = () => <h1>Namaste Dosto</h1>
+
+3.       const FunctionalComponent = () => (
+            <div id="container">
+                <h1 className = "heading">Namaste Dosto</h1>
+            </div>
+            )
+
+1 and 2 and 3 are valid
+
+root.render(<FunctionalComponent/>) , This is how we render a functional component in React and BABEL does it for us
+
+const Heading1 = () => (<h1 className="head">Namaste JSX</h1>)
+
+const HeadingComponent = () => (
+
+  <div>
+    <Heading1/>                 Linking the Heading1 Component to HeadingComponent
+    <h1>Namaste Dosto</h1>
+  </div>
+)
+
+root.render(<HeadingComponent/>); Rendering the HeadingComponent which will also render Heading1 Component
+
+This is also known as Component Composition
+
+Composing 2 component is known as Component Composition
+
+How to add a JavaScript/ React Element inside the functional Component or JSX
+
+const number = 1000;
+
+const HeadingComponent = () => (
+
+  <div>
+    <h1>{number}<h1>            To add JS inside a Component we use { } and put the JS inside the brackets
+    <h2>{100+200}</h2>  
+    <h3>{console.log("Namaste World")} </h3>               
+    <h1>Namaste Dosto</h1>
+  </div>
+)
+
+We can put JavaScript inside functional component, we can put React Element inside functional component, we can put Functinal Component inside the react element
+
+---
+
+Whatever is written inside the { } is sanitized fisrt and then executed
+JSX is so powerful that if someone tries to do any cross site scripting attack or some injection attak it wont execute it blindly, it will first check the data sanatize it and then execute it
+
+const title = (
+
+  <h1 className="head" tabIndex="5">
+    React using JSX🚀
+  </h1>
+)
+
+const Title = () => (
+
+  <h1>YO YO</h1>
+
+)
+
+const HeadingComponent = () => (
+
+  <div id="container">
+    {title}
+    <Title />
+    <Title></Title> // functional component can be called this way and directly
+    {Title()}
+    like
+    <h1>Namaste Dosto</h1>
+  </div>
+);
+
+
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+import React from "react";
+// import ReactDOM from "react-dom";     used earlier
+import ReactDOM from "react-dom/client"
+
+
+const title = (
+  <h1 className="head" tabIndex="5">
+    React using JSX🚀
+  </h1>
+)
+
+const Title = () => (
+  <h1>YO YO</h1>
+
+)
+
+const HeadingComponent = () => (
+  <div id="container">
+    {title}
+    <Title />
+    <Title></Title> // functional component can be called this way and directly
+    {Title()}
+    like
+    <h1>Namaste Dosto</h1>
+  </div>
+);
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+
+root.render(<HeadingComponent/>);

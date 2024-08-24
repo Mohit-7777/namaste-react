@@ -6,13 +6,15 @@
     <link rel="stylesheet" href="index.css">
 </head>
 <body>
-    <h1>Hello Frands</h1>
-    <div id="root"></div>   <!--Render() will only work in this tag. Rest will remain the same. Render will replace everything inside this tag-->
-    <h1>Hello Frands</h1>
+    
+    <div id="root">
+        <h1>Not Rendered</h1>
+    </div>   <!--Render() will only work in this tag. Rest will remain the same. Render will replace everything inside this tag-->
+ 
    
 
 <!-- <script src="02ReactUsingCDN.js"></script> -->
-<script type="module" src="./App.js"></script>     <!--The sequence of the tags matter because the last script file is using the upper script files to run JS -->
+<script type="module" src="./src/App.js"></script>     <!--The sequence of the tags matter because the last script file is using the upper script files to run JS -->
 
 
 

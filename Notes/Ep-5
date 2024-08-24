@@ -1,0 +1,76 @@
+Lets Clean Our code 
+
+- Firstly, we should put our codes to the "src" folder. Its the industrial convention.
+- Secondly, the Best practice is to separate all the component of our code in an individual file
+- And put them all inside a folder known as Components
+
+-------------------------------------------------------------------------------------------------------------------------------------------
+
+- to Pass the function or variables to other files we gotta export the files 
+- Exports are of 2 types
+1. Default Export           2. Named Export
+
+1. Default Export : - export default file_Name
+2. Named Exprot : -  we use prefix export while defining the component or variable
+
+
+
+- to use the exported file we are required to import the file 
+- Imports are of 2 type
+
+1. Default                  2. Named 
+
+1. Default :- Default Imports are for when export is also default
+
+    import file_Name from "src"
+
+2. Named :- Named Imports are for when export is also Named
+
+    import {file_name } from "src"
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+React is fast because the DOM manipulation is super quick because of its Virtural Dom
+
+setState :- setState is a react Hook 
+setState is basically a very special and very Powerful function which is used to rerender the UI
+
+Whenever a state variable updates react rerenders the component
+
+normal variables can only do changes in my console but State variable is so powerful that is can do changes in my UI also.
+
+
+If i use normal variable it can update the data but won't be able to refresh the ui.
+
+For ex:- If we try to change the name of a button using normal variable, it will be able to change the name of the button but 
+it won't be able to show the button on the UI because it need a refresh to change the state of the inner Component.
+
+To conquer this, we have a Special Hook known as UseState Hook.
+
+
+UseState Behaves like a normal JS variable but it is a Special Variable which can Change the state of an Item
+
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+
+How React Changes the UI so fast?
+
+Reconcilation Algorithm (React Fiber) :-
+
+In this we have a concept of Virtual Dom
+React Keeps track of virtual DOM as an Object
+React doesn't touch html
+Suppose We have 7 res-Cards and after using useState we are left with 3 res-Cards
+React will compare the Virtaul DOM object of 7 res-Cards with 3 res-Cards and Update the UI so fast because it doesn't html.
+It will do this only with the help of JS objects
+
+React can find out the diff between the virtual doms and update the ui
+
+
+reconciliation
+The algorithm React uses to diff one tree with another to determine which parts need to be changed.
+update
+A change in the data used to render a React app. Usually the result of `setState`. Eventually results in a re-render.

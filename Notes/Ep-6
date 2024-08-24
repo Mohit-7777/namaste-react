@@ -1,0 +1,172 @@
+What is a Monolithic Architecture?
+
+
+A monolithic architecture is a traditional approach to designing software where an entire application is built as a single, indivisible unit. In this architecture, all the different components of the application, such as the user interface, business logic, and data access layer, are tightly integrated and deployed together.
+
+- This means that any changes or updates to the application require modifying and redeploying the entire monolith.
+- Monolithic architectures are often characterized by their simplicity and ease of development, especially for 
+    small to medium-sized applications.
+- However, they can become complex and difficult to maintain as the size and complexity of the application grow.
+
+
+What is a Microservices Architecture?
+
+
+In a microservices architecture, an application is built as a collection of small, independent services, each representing a specific business capability. These services are loosely coupled and communicate with each other over a network, often using lightweight protocols like HTTP or messaging queues.
+
+- Each service is responsible for a single functionality or feature of the application and can be developed, deployed, and scaled independently.
+- The Microservice architecture has a significant impact on the relationship between the application and the database.
+- Instead of sharing a single database with other microservices, each microservice has its own database. It often results in
+    duplication of some data, but having a database per microservice is essential if you want to benefit from this architecture, as it ensures loose coupling.
+
+
+
+
+    We use MircoSercives in Industry now a days
+
+
+    LOAD -----------> RENDER UI --------------->API CALLS ---------------> UPDATE
+
+
+
+    ----------------------------------------------------------------------------------------------------------------------------------------------
+
+
+React useEffect Hook
+
+React useEffect Hooks are normal JS functions
+React useEffect Hooks has two arguments, first is a callback function and second one is dependencies
+The callback funciton is called after our component renders
+After everything will be rendered in our UI, This useEffect Hook will start working
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------
+
+Optional Chaining
+
+It allows you to access properties of an object without worryin gif the object or any of its nested properties are null or undefined. 
+It is denoted by "?."
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+Shimmer UI
+
+A better way to show loading states is to use a shimmer UI. A shimmer UI is a version of the UI that doesn’t 
+contain actual content, but instead mimics the layout and shapes of the content that will eventually appear. 
+It uses a gradient animation that creates a shimmering effect over the placeholders, giving the user a sense of motion and progress.
+
+------------------------------------------------------------------------------------------------------------------------------------------------
+
+Conditional Rendering:-
+
+Rendering data onto the browser on the basis of a Condition is known as Conditional Rendering
+
+For Ex :-
+
+
+if(ResObj.length===0){
+    return <Shimmer/>
+  }
+
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+import { useState } from "react";
+import { LOGO_URL } from "../utils/constants";
+const Header = () => {
+const [BtnName, setBtnName] = useState("Login")
+
+  return (
+    <div className="header">
+      <div className="logo-container">
+        <img
+          className="logo"
+          src={LOGO_URL}
+          alt="This is an Image"
+        />
+      </div>
+      <div className="nav-item">
+        <ul>
+          <li>Home</li>
+          <li>About us</li>
+          <li>Contact us</li>
+          <li>Cart</li>
+          <button className="Login-Btn" onClick={()=>{setBtnname("Logout")}}>{BtnName}</button>
+        </ul>
+      </div>
+    </div>
+  );
+};
+
+export default Header;
+
+
+
+Here in this component, We have a Button BtnName which has a default value of Login.
+As soon as we click on the Login Button, the whole Header component will run again.
+
+BtnName is const still how are we able to change the name of it from login to logout.
+It is because we are not changing the BtnName instead we are running the Header component again where there were NO 
+value assigned to the const = "BtnName" 
+
+And Since, the whole header is running again our whole Header will be Rendered again.
+
+
+The Login/Logout Button gets refreshed as well as the whole Header Component runs again and again due to the setBtnName.
+
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------
+
+Use of onchange()
+
+
+
+
+import React, { useState } from 'react';
+
+function MyForm() {
+  const [inputValue, setInputValue] = useState('');
+
+  const handleChange = (event) => {
+    setInputValue(event.target.value);
+  };
+
+  return (
+    <div>
+      <input type="text" value={inputValue} onChange={handleChange} />
+      <p>You typed: {inputValue}</p>
+    </div>
+  );
+}
+
+export default MyForm;
+
+
+- useState: This hook is used to store the state of the input value.
+- handleChange function: This is the function that gets called whenever the value of the input field changes. 
+  It updates the state with the new value from event.target.value
+
+
+  
+event: This is the event object that is automatically passed to the event handler function when an event occurs. 
+It contains various properties and methods that provide information about the event and the element that triggered it.
+
+target: This is a property of the event object that refers to the DOM element that triggered the event. 
+In the context of an onChange event, target typically refers to the input element (e.g., <input>, <select>, <textarea>).
+
+value: This is a property of the target element, representing the current value of that element. 
+For example, if the target is a text input field, value will be whatever the user has typed into that field.
+
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------
+
+React Fiber/ Reconciliation 
+
+2 Virtual Dom

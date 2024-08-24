@@ -1,0 +1,238 @@
+// - Component Composition :- When a Component is passed to another component and that component is also passed to another component that is known as Component Composition
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+CSS 
+Inline Css in React:-
+As we know that react Elements are JS Objects, just like that we write css in Object when using JSX
+EG:- 
+                const styleCard = {
+                backgroundColor : "#f0f0f0"
+                }
+
+                const RestaurantCard = () => {
+                return(
+                    <div className="res-card" style={styleCard}>    StyleCard is an Object initialized above
+                    <h3>Meghana Foods</h3>
+                    </div>
+                )
+                }
+
+                                        OR
+
+
+                        const RestaurantCard = () => {
+                         return(
+                            <div className="res-card" style={{      Inline Css using JS Objects
+                                backgroundColor : "#f0f0f0"         1st {} is to tell there is some JS inside Style
+                             } }>                                   2nd {} is to tell that there is JS Object
+                              <h3>Meghana Foods</h3>
+                           </div>
+                      )
+                    }     
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Props :- Short form for Properties
+props are something which you can pass to the components
+We can dynamically pass the data to the components using props
+props are just normal arguments to a function
+
+-In the parameters of the component props are the objects
+-And we can destructure them at the parameters
+
+const{resName,cuisines} = props;
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+config driven ui :- Our webiste is driven is controlled by data/config. config comes from the backend
+carousel can be different for delhi, mumbai, banguluru, kolkata etc
+ui is changing according to data
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Different ways to use PROPS
+
+
+const RestaurantCard = (props) => {                     NO DESTRUCTURING IS DONE HERE
+
+
+  return (
+    <div className="res-card" style={styleCard}>
+      <img
+        className="res-logo"
+        src="https://img-new.cgtrader.com/items/3596870/8d642d7a84/large/parotta-3d-model-3d-model-fbx-ma.jpg"
+        alt="An Img"
+      />
+      <h3>{props.resData.name}</h3>                                     PROPS.PROPS_NAME.KEY    IS USED TO ACCESS THE DATA
+      <h4>{props.resData.cuisines.join(", ")} </h4>           //to separate array with ,      
+      <h4>{props.resData.avgRating} stars</h4>
+      <h4>₹{props.resData.costForTwo / 100} For Two</h4>
+      <h4>{props.resData.deliveryTime} minutes</h4>
+    </div>
+  );
+};
+
+const resObj = {
+  name: "KFC",
+  cuisines: ["Burgers", "Biryani", "American", "Snacks", "Fast Food"],
+  costForTwo: 40000,
+  avgRating: "3.8",
+  deliveryTime: 36,
+};
+
+const Body = () => {
+  return (
+    <div className="body">
+      <div className="search">Search</div>
+      <div className="res-container">
+        <RestaurantCard resData={resObj} />
+      </div>
+    </div>
+  );
+};
+
+
+                            ---------------------------------------------------------------------
+
+
+
+const RestaurantCard = ({resData}) =>  {                    DIRECTLY DESTRUCTURED THE PROPS.
+
+  return (
+    <div className="res-card" style={styleCard}>
+      <img
+        className="res-logo"
+        src="https://img-new.cgtrader.com/items/3596870/8d642d7a84/large/parotta-3d-model-3d-model-fbx-ma.jpg"
+        alt="An Img"
+      />
+      <h3>{resData.name}</h3>
+      <h4>{resData.cuisines.join(", ")} </h4>
+      <h4>{resData.avgRating} stars</h4>
+      <h4>₹{resData.costForTwo / 100} For Two</h4>
+      <h4>{resData.deliveryTime} minutes</h4>
+    </div>
+  );
+};
+
+const resObj = {
+  name: "KFC",
+  cuisines: ["Burgers", "Biryani", "American", "Snacks", "Fast Food"],
+  costForTwo: 40000,
+  avgRating: "3.8",
+  deliveryTime: 36,
+};
+
+const Body = () => {
+  return (
+    <div className="body">
+      <div className="search">Search</div>
+      <div className="res-container">
+        <RestaurantCard resData={resObj} />
+      </div>
+    </div>
+  );
+};
+
+
+
+
+                                 ---------------------------------------------------------------------
+
+
+
+
+const RestaurantCard = (props) =>  {          
+    const {resData} = props;                                             DESTRUCTURING IS DONE OVER HERE
+
+  return (
+    <div className="res-card" style={styleCard}>
+      <img
+        className="res-logo"
+        src="https://img-new.cgtrader.com/items/3596870/8d642d7a84/large/parotta-3d-model-3d-model-fbx-ma.jpg"
+        alt="An Img"
+      />
+      <h3>{resData.name}</h3>
+      <h4>{resData.cuisines.join(", ")} </h4>
+      <h4>{resData.avgRating} stars</h4>
+      <h4>₹{resData.costForTwo / 100} For Two</h4>
+      <h4>{resData.deliveryTime} minutes</h4>
+    </div>
+  );
+};
+
+const resObj = {
+  name: "KFC",
+  cuisines: ["Burgers", "Biryani", "American", "Snacks", "Fast Food"],
+  costForTwo: 40000,
+  avgRating: "3.8",
+  deliveryTime: 36,
+};
+
+const Body = () => {
+  return (
+    <div className="body">
+      <div className="search">Search</div>
+      <div className="res-container">
+        <RestaurantCard resData={resObj} />
+      </div>
+    </div>
+  );
+};
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+Optional chaining (?.)
+
+
+The optional chaining (?.) operator accesses an object's property or calls a function. 
+If the object accessed or function called using this operator is undefined or null, 
+the expression short circuits and evaluates to undefined instead of throwing an error.
+
+
+
+
+const adventurer = {
+  name: 'Alice',
+  cat: {
+    name: 'Dinah',
+  },
+};
+
+const dogName = adventurer.dog?.name;
+console.log(dogName);
+// Expected output: undefined
+
+console.log(adventurer.someNonExistentMethod?.());              Instead of error it will give undefined as output
+// Expected output: undefined
+
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+Warning: Each child in a list should have a unique "key" prop.
+
+While looping we get this WARNING because while passing a prop we should uniquely define that all the obejcts that 
+are being passed to the functional components are differnt.
+
+
+ {
+          resObj.map((restaurant) => (<RestaurantCard key={restaurant.id} resData={restaurant}/>))
+        }
+
+That's how we use key. Inside the resObj we have ids for different objects and using the "restaurant" in the parameters of the map function
+we are accessing the individual objects and putting them inside the key.
+
+
+In React, the key prop is used to uniquely identify elements in a list.
+ It helps React efficiently update the UI by allowing it to quickly determine which items have changed, 
+ been added, or removed, without re-rendering the entire list. 
+ This improves performance and ensures that components maintain their state correctly.

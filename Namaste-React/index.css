@@ -1,3 +1,104 @@
-#heading{
-    color: red;
+.header{
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid black;
+}
+.logo{
+    width: 100px;
+    position: relative;
+    
+
+}
+.nav-item > ul{
+    font-size: 24px;
+    display: flex;
+}
+.nav-item>ul>li{
+    /* padding: 10px; */
+    margin-left: 20px;
+    margin-right: 20px;
+    list-style-type: none;
+    
+}
+.res-container{
+    display: flex;
+    flex-wrap: wrap;
+}
+.res-card{
+    margin: 20px;
+    padding: 5px;
+    width: 200px;
+    /* height: 350px; */
+   
+}
+.res-card:hover{
+    cursor: pointer;
+     border: 1px solid black;
+}
+.search{
+    padding: 10px;
+}
+.res-logo{
+    padding: 5px;
+    width: 95%;
+}
+
+.shimmer-container{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.shimmer-card{
+    background-color: rgb(192, 188, 188);
+    margin: 25px;
+    margin-top: 35px;
+    width: 200;
+    height: 400;
+    
+
+}
+
+.shimmer-inside{
+    background-color: grey;
+    height: 150px;
+    width: 150px;
+    margin: 25px;
+}
+.shimmer-inside2{
+    background-color: grey;
+    height: 20px;
+    width: 150px;
+    margin: 5px;
+}
+.shimmer-inside4{
+    background-color: grey;
+    height: 20px;
+    width: 150px;
+    margin: 5px;
+    margin-top: 25px;
+}
+.shimmer-inside3{
+    background-color: grey;
+    height: 20px;
+    width: 100px;
+    margin: 5px;
+    margin-top: 25px;
+}
+.Login-Btn{
+    margin: 0 30px;
+    cursor: pointer;
+}
+.filter-btn>button{
+    margin: 15px;
+}
+.filter-btn>div{
+    margin: 15px;
+}
+.filter-btn>div>button{
+    margin: 5px;
+}
+
+.filter-btn{
+
+    display: flex;
 }
