@@ -3,6 +3,7 @@ import React, { useEffect } from "react";
 import RestaurantCard from "./RestaurantCard";
 import { useState } from "react";
 import Shimmer from "./Shimmer";
+import { Link } from "react-router-dom";
 
 const Body = () => {
   const [ResObj, setResObj] = useState([]);
@@ -25,13 +26,13 @@ const Body = () => {
 
     const json = await data.json();
 
-    console.log(json);
+    // console.log(json);
 
     setResObj(
-      json?.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+      json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
     setFilteredRest(
-      json?.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+      json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
   };
 
@@ -83,10 +84,13 @@ const Body = () => {
         </div>
         <div className="res-container">
           {FilteredRest.map((restaurant) => (
-            <RestaurantCard
+            <Link
               key={restaurant.info.id}
-              resData={restaurant.info}
-            />
+              to={"/restaurants/" + restaurant.info.id}
+            >
+              {" "}
+              <RestaurantCard resData={restaurant.info} />
+            </Link>
           ))}
         </div>
       </div>

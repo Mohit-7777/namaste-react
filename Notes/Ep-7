@@ -1,0 +1,187 @@
+Some Important points that we should keep in our mind about Hooks
+
+- We Should not use our Hooks outside of a component
+- Hooks should always be used at the top of the component to avoid any inconsistency in the code
+- Hooks should not be used inside any if statement, for loop etc to avoid inconsistency
+
+--------------------------------------------------------------------------------------------------------------------------------------------------
+
+npm i react-router-dom
+
+- With this we can install router dom into our react application
+- Routes are basically used for linking new pages to the home page
+- similar to the anchor tag which we use in html
+- But here in react we do it in a more efficient manner with the help of react-router-dom
+
+--------------------------------------------------------------------------------------------------------------------------------------------------
+
+createBrowserRouter is a component that is imported from the "react-router-dom"
+
+
+- It takes list/array of objects as arguments
+
+const appRouter = createBrowserRouter([
+  {
+    path: "/",                          //The path is defined here
+    element: <AppLayout />,             //At that path what component will be shown
+    errorElement : <Error/>             //errorElement helps in displaying an error if the path is wrong
+  }
+  {
+    path: "/about",                     //This is for a /about
+    element: <About />,                 //Here we need to make a separate About component and import it
+  },
+  {
+    path: "/contact",                    //This is for contact
+    element: <Contact />,   
+  },
+]);
+
+
+
+Despite all this if we go to http://localhost:1234/about it won't work. Because at the end we are rendering 
+
+- root.render(<AppLayout/>);
+
+- and we can only render 1 tag at a time.
+
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------------
+
+Router Provider
+
+Router Provider is a component form react-router-dom used to render the variable which stores the createBrowserRouter(It passes array of objects as an argument)
+
+
+root.render(<RouterProvider router={appRouter} />);
+
+- here {appRouter} is the variable which store the reference to the paths and the components
+and RouterProvider is used as a JSX here.
+
+--------------------------------------------------------------------------------------------------------------------------------------------------
+
+Problem in the code
+
+Everytime we use /about or /contact we are losing the header whereas it should be right there on the top forever
+
+- TO overcome this problem we use 
+1 childern : [] list
+
+
+const appRouter = createBrowserRouter([
+  {
+    path: "/",
+    element: <AppLayout />,                                                     AppLayout has Header as permanent in it
+    children: [                                         children of AppLayout
+      {
+        path: "/",
+        element: <Body />,                              1. body
+      },
+      {
+        path: "/about",                                 2. about
+        element: <About />,
+      },
+      {
+        path: "/contact",                               3. contact
+        element: <Contact />,
+      },                                                        
+    ],                                                    Only one can be there on the browser at a time
+    errorElement: <Error />,
+  },
+]);
+
+--------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+Still if we run the code it won't work....
+
+TO make it work we need to import something called Outlet from the react-router-dom
+
+- and in AppLayout below Header we need to use Outlet
+
+            <Header /> 
+            <Outlet />
+
+
+Outlet will be changed according to the path that is on the browser
+
+If we have /about as path, the outlet will be converted to <About />  and so on
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+Now How do we link those pages to our buttons
+- One way is to link using the anchor tag. Anchor tag is used to link two html pages with the help of href attribute
+    But the only problem wiht anchor tag is that our page will be refreshed again and agian when we click on the buttons
+    Since it will take the data from a totally different page, it need to reload the page.
+
+- Second way is using the Link tag
+    import {Link} from "react-router-dom";
+
+    <Link to="/about"> About </Link>
+
+Link tag is also similar to the anchor tag. but unlike anchor tag Link tag does not refreshes the page because all the data that is 
+required to refresh/update the page is already there. The code is bundled and whatever the data or the page is required, it can be fetched
+quickly without any refresh
+
+This is what is known as Single Page Application
+
+This is why react is fast
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------------
+
+Two types of Routing in Web Apps
+
+- Client Side Routing
+- Server Side Routing
+
+In Client Side Routing, all data is already present in a Loaded website. It just need to update the components as the users demand
+
+In Server Side Routing, all data is not Loaded in a Loaded website. The page that is being dispalyed is loaded. To load other pages
+we need to request the server and server will fulfill our request
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------------
+
+Dynamic Route
+
+- Dynamic Route means when we click on a restaurant it will have a different restaurant and when we click on the other route it will have a differnt route And the data is fetched from an Api. This is known as Dynamic Route.
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------------
+
+useParams Hook
+
+useParam Hook is used to fetch the resId and we can store it inside a variable.
+resId is basically given inside the createBrowserRouter inside a path
+
+const appRouter = createBrowserRouter([
+  {
+    path: "/",
+    element: <AppLayout />,
+    children: [
+      {
+        path: "/",
+        element: <Body />,
+      },
+      {
+        path: "/about",
+        element: <About />,
+      },
+      {
+        path: "/contact",
+        element: <Contact />,
+      },
+      {
+        path: "/restaurants/:resId",            resId is provided here and useParams fetches it
+        element: <RestaurantMenu />,
+      },
+    ],
+    errorElement: <Error />,
+  },
+]);
+
+
+resId is not constant it changes which helps the route to change every instance and our link to a page changes

@@ -35,10 +35,21 @@ In a microservices architecture, an application is built as a collection of smal
 React useEffect Hook
 
 React useEffect Hooks are normal JS functions
-React useEffect Hooks has two arguments, first is a callback function and second one is dependencies
+React useEffect Hooks has two arguments, first is a callback function and second one is a dependencies array 
 The callback funciton is called after our component renders
 After everything will be rendered in our UI, This useEffect Hook will start working
 
+
+Dependency array is not Mandatory.
+If we use Dependency array, useEffect won't be renderend again and again.
+If we dont use Dependency array, useEffect will be rendered again and again.
+If we pass any something in the dependeny array
+
+ useEffect(() => {
+    
+  }, [BtnName]);
+
+  It will only be rendered only when the ResObj gets updated.
 
 
 ----------------------------------------------------------------------------------------------------------------------------------------------
