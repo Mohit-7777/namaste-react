@@ -28,7 +28,7 @@
     margin: 20px;
     padding: 5px;
     width: 200px;
-    /* height: 350px; */
+    height: 550px;
    
 }
 .res-card:hover{
@@ -101,4 +101,9 @@
 .filter-btn{
 
     display: flex;
+}
+
+.user-card{
+    padding: 10px;
+    border: 1px solid black;
 }

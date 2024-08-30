@@ -1,0 +1,76 @@
+Class Based Components
+Q- Why to Learn?
+- Asked In interviews
+- Most companies still use it
+- Helps to learn react more properly
+
+
+- to create a class based component 
+
+1. class ComponentName extract React.Component
+2. Import React from "react";
+3. render(){
+    return(
+        Here we can write JSX just like functional Component
+    )
+    }
+
+    export default ComponentName
+
+
+    Difference between Class Based and Functional Based COmponent
+
+In class Based Component we need to import React from "react"
+In class Based Component we need to extend React.Component
+In class Based Component we need to render() and return is used inside the render()
+render() returns a piece of JSX
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+Whenever we create an instance of a class, constructor is called.
+Constructor is best place to receive props and also the best place to create State Variable
+
+
+when we pass parameters to a class component, at the very beginning the constructor is called and then later render() will be called
+
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+componentDidMount() is a method which is called after the constructor and render() is completly mounted or loaded or rendered
+its kinda similar to useEffect.
+In functional component we use useEffect instead of componentDidMount()
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+
+-----------Mounting LifeCycle ------------
+
+Constructor(dummmy)
+Render (dummy)
+        <HTML Dummy>
+Component Did Mount
+        <API Call>
+        <this.setState> -> State variable is updated        
+         (Here it is just called not executed yet. It'll be executed in Update Cycle)
+
+
+----------UPDATE Cycle---------------
+                                after setState is called
+        render(API data)
+        <HTML>(new API data)
+
+componentDid Update is Called Now 
+
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+
+componentWillUnmount
+Takes place when the setState variable which has been rendered (through the api calls) gets fully loaded and we move to a different page. When we move to a different page our data will be unmounted real quick
+

@@ -4,6 +4,7 @@ import RestaurantCard from "./RestaurantCard";
 import { useState } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 const Body = () => {
   const [ResObj, setResObj] = useState([]);
@@ -26,7 +27,7 @@ const Body = () => {
 
     const json = await data.json();
 
-    // console.log(json);
+    console.log(json);
 
     setResObj(
       json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
@@ -35,6 +36,20 @@ const Body = () => {
       json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
   };
+
+
+const onlineStatus = useOnlineStatus();
+
+if(onlineStatus===false)
+  return( <h1>Opps! You don't have Internet Connection</h1>)
+
+
+
+
+
+
+
+
 
   //conditional rendering
   // if(ResObj.length===0){

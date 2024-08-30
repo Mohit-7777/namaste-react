@@ -1,0 +1,71 @@
+Modularity
+
+Modularity means keeping you codes into different different modules.
+For exmaple the components. We keep all the components of our app in a different folder 
+-This helps in debugging our code easily. We don't need to search the error in all our code, we only need to search it on the component wher the error is showing
+- And secondly, if we need to show a component in a differnt page or anywhere we can reuse it.
+
+----------------------------------------------------------------------------------------------------------------------------------------------------
+
+Single responsibility Function :- A single Responsibility function refers to where functions has only one responsibility.
+
+for example in a code where we are fetching the data and then displaying the data.
+In Single Responsibility Function we can split the fetching logic in a differnt function and then import it to the displaying function.
+
+
+The creation of spliting the function and create a new function for a single task and then importing it to the display function is known as custom hooks.
+
+----------------------------------------------------------------------------------------------------------------------------------------------------
+
+Hook is just a utility Function
+
+Custom Hooks :- Custom Hooks are the hooks which are created by us programmers.
+These hooks are created so that our app follows single responsibility function.
+With this it is easy to debug the errors
+
+
+The convention is to use prefix "use" on custom hooks
+
+for ex :- 
+useFetchData() 
+
+- These hooks are usually put inside the utils folder
+
+----------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+How to check online or offline
+
+It can be checked using eventlistners
+
+useEffect(() => {
+    const handleOnline = () => setOnlineStatus(true);
+    const handleOffline = () => setOnlineStatus(false);
+
+    window.addEventListener("online", handleOnline);
+    window.addEventListener("offline", handleOffline);
+
+    return () => {
+      window.removeEventListener("online", handleOnline);
+      window.removeEventListener("offline", handleOffline);
+    };
+  }, []);
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------
+
+Chunking
+Code Splitting
+Dynamic Bundling
+Lazy Loading
+On Demand Loading
+Dynamic Import
+
+
+
+To make your code smaller
+Logical Separation of smaller Bundles
+
+
+Suppose in our app we have a button for grocery. And we did Lazy Loading in the code
+now If we run or app, our app will not load grocery, Our app will only load Grocery when we click on the button Grocery
