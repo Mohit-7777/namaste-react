@@ -13,29 +13,29 @@ const Header = () => {
   }, [BtnName]);
 
   return (
-    <div className="header">
+    <div className="flex justify-between bg-pink-100 sm:bg-green-200 lg:bg-pink-200">
       <div className="logo-container">
-        <img className="logo" src={LOGO_URL} alt="This is an Image" />
+        <img className="w-24" src={LOGO_URL} alt="This is an Image" />
       </div>
       <div className="nav-item">
-        <ul>
+        <ul className="flex m-2 p-4 ml-11 items-start">
           <li>Online Status : {onlineStatus ? "🟢" : "🔴"}</li>
-          <li>
+          <li className="px-4">
             {" "}
             <Link to="/">Home</Link>
           </li>
-          <li>
+          <li className="px-4">
             <Link to="/about">About us</Link>
           </li>
-          <li>
+          <li className="px-4">
             {" "}
             <Link to="/contact">Contact us</Link>
           </li>
-          <li>
+          <li className="px-4">
             {" "}
             <Link to="/grocery">Grocery</Link>
           </li>
-          <li>Cart</li>
+          <li className="px-4">Cart</li>
           <button
             className="Login-Btn"
             onClick={() => {

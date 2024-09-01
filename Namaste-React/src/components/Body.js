@@ -62,11 +62,11 @@ if(onlineStatus===false)
       <Shimmer />
     ) : (
       <div className="body">
-        <div className="filter-btn">
+        <div className="flex">
           <div>
             <input
               type="text"
-              className="search-box"
+              className="m-4 border border-solid rounded border-black "
               value={Searchtxt}
               onChange={(e) => {
                 setSearchtxt(e.target.value);
@@ -74,7 +74,7 @@ if(onlineStatus===false)
             />
 
             <button
-              className="search-btn"
+              className="bg-green-500 px-3 py-2 rounded"
               onClick={() => {
                 const filteredRestaurant = ResObj.filter((res) =>
                   res.info.name.toLowerCase().includes(Searchtxt.toLowerCase())
@@ -88,6 +88,7 @@ if(onlineStatus===false)
           </div>
 
           <button
+            className="bg-blue-500 rounded px-4 py-1 m-3"
             onClick={() => {
               const filter = ResObj.filter((res) => res.info.avgRating >= 4.5);
 
@@ -97,7 +98,7 @@ if(onlineStatus===false)
             Filter the Resturants
           </button>
         </div>
-        <div className="res-container">
+        <div className="flex flex-wrap">
           {FilteredRest.map((restaurant) => (
             <Link
               key={restaurant.info.id}
