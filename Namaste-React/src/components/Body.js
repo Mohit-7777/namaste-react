@@ -1,10 +1,11 @@
 import resObj from "../utils/mockData";
-import React, { useEffect } from "react";
+import React, { useEffect, useContext } from "react";
 import RestaurantCard from "./RestaurantCard";
 import { useState } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import userContext from "../utils/userContext";
 
 const Body = () => {
   const [ResObj, setResObj] = useState([]);
@@ -56,6 +57,9 @@ if(onlineStatus===false)
   //   return <Shimmer/>
   // }
 
+
+  const {loggedInUser, setUserName} = useContext(userContext)
+
   return (
     //Ternary Operator is used here
     ResObj.length === 0 ? (
@@ -95,9 +99,14 @@ if(onlineStatus===false)
               setFilteredRest(filter);
             }}
           >
-            Filter the Resturants
+            Top Rated Resturants
           </button>
+          <div>
+            <label htmlFor="">UserName : </label>
+            <input className="border border-black m-4  mx-1 p-0.5 border-solid rounded"  value={loggedInUser} onChange={(e)=>setUserName(e.target.value)}/>
+          </div>
         </div>
+
         <div className="flex flex-wrap">
           {FilteredRest.map((restaurant) => (
             <Link

@@ -1,0 +1,42 @@
+Redux is used in big application where the data is transfered or received in a very big amount
+
+If there are a lot of Component and a lot of data is being transferred between the components and app is gone huge
+
+Redux is not mandatory
+
+Redux is not the part of react
+
+Redux is not just used in React but it is mostly used in react
+
+1. React-redux lib is a bridge betweeen react and redux. 
+2. Redux toolkit
+
+vinella redux is not used now because it need a lot of packages to install to make it work
+it is a lot complicated
+too much boiler plate code
+
+
+Redux is a very big store which contain a lot of objects and is in a global space
+Any componenet can use directly redux store
+
+is it good to store all  the data inside the redux store
+Yes it is good. it is completely fine
+
+so it doesn't become too Big and Clumsy we use slices
+Slices are the multiple small portion in the redux store
+
+Slices keep similar type of data
+for ex :- To store the information of card, we can store it in a differnt slice, and to store loggedIn user data we use different slices
+
+
+Instead of creating a lot of contexts, we can create a Redux to manage state
+
+State refers to any data that the application needs to keep track of.
+
+The currently logged-in user.
+Items in a shopping cart.
+Data fetched from an API.
+The current page or view the user is on
+
+
+pressing the button ------------------> Dispatches the action---------------> Reducer Function-----------------> Update Slice of Redux Store
